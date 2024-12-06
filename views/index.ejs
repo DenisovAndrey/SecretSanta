@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Santa</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎄 Secret Santa 🎁</h1>
+        </header>
+
+
+        <!-- Assign Secret Santa -->
+        <section>
+            <h2>Assign Secret Santa</h2>
+            <form action="/assign" method="POST" class="form">
+                <div class="custom-select">
+                    <select name="participant" required>
+                        <option value="">Select your name</option>
+                        <% participants.forEach(participant => { %>
+                            <% if (!alreadySelected.has(participant)) { %>
+                                <option value="<%= participant %>"><%= participant %></option>
+                            <% } %>
+                        <% }); %>
+                    </select>
+                </div>
+                <button class="button-confirm" type="submit">Find Recipient</button>
+            </form>
+        </section>
+
+        <!-- Participants Who Have Been Assigned -->
+        <section class="participants-section">
+            <h2>Players Who Have Participated</h2>
+            <% if (alreadySelected.size === 0) { %>
+                <p>No players have participated yet.</p>
+            <% } else { %>
+                <ul class="participants-list">
+                    <% alreadySelected.forEach(participant => { %>
+                        <li><strong><%= participant %></strong></li>
+                    <% }); %>
+                </ul>
+            <% } %>
+        </section>
+    </div>
+</body>
+</html>
