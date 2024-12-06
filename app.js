@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // In-memory data storage
-let participants = ["Andrey", "Maria", "Kirill", "Eva", "Tanya", "Alexey", "Arseniy"];
+let participants = ["Andrey", "Maria", "Kirill", "Eva", "Tanya", "Alexey", "Arseniy", "Vasya"];
 let assignments = {};
 let alreadySelected = new Set();
 
@@ -95,5 +95,5 @@ app.post('/reset', (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-    console.log(`Secret Santa app running at http://localhost:${PORT}`);
+    console.log(`Secret Santa app running on port: ${PORT}`);
 });
